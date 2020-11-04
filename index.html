@@ -28,16 +28,28 @@
 
     <!-- MAIN CONTENT SECTION -->
     <main class="main-content">
-      <!-- <div class="icon">
-        <i class="fas fa-cat"></i>
-        <span>cat</span>
-      </div> -->
+      
     </main>
   </div>
+
+  <!-- HANDLEBARS TEMPLATES -->
+  <!-- Option -->
+  <script id="option-template" type="text/x-handlebars-template">
+    <option value="{{ type }}">{{ type }}</option>
+  </script>
+  <!-- Icon -->
+  <script id="icon-template" type="text/x-handlebars-template">
+    <div class="icon">
+    <i class="{{ family }} {{prefix}}{{ name }}" style="color: {{ color }}"></i>
+      <span>{{ name }}</span>
+    </div>
+  </script>
 
   <!-- JS -->
   <!-- Jquery -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+  <!-- Handlebars -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js'></script>
   <!-- main script -->
   <script src="./js/main.js"></script>
 </body>
