@@ -55,8 +55,10 @@ body {
   flex-basis: calc(100% / 6 - 20px);
   margin: 20px 10px;
   padding: 30px;
+  text-align: center;
   background-color: #fff;
   border-radius: 10px;
+  transition: .2s linear;
 }
 
 .icon i {
@@ -66,4 +68,18 @@ body {
 
 .icon span {
   text-transform: uppercase;
+}
+
+/* Media queries */
+/* tablet */
+@media screen and (max-width: 1200px) {
+  .icon {
+    flex-basis: calc(100% / 4 - 20px);
+  }
+}
+/* small screen */
+@media screen and (max-width: 600px) {
+  .icon {
+    flex-basis: calc(100% / 2 - 20px);
+  }
 }

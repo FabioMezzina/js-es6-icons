@@ -124,7 +124,7 @@ $(document).ready(function () {
  * @param {object} icons 
  */
 function getTypes(icons) {
-  let types = [];
+  const types = [];
   icons.forEach((icon) => {
     if(! types.includes(icon.type)) {
       types.push(icon.type);
