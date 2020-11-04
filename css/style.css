@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  font-family: 'Rubik', sans-serif;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* HEADER */
+.logo {
+  padding: 20px;
+  font-size: 30px;
+  color: dodgerblue;
+}
+
+/* FILTER SECTION */
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-transform: uppercase;
+  background-color: dodgerblue;
+}
+
+.filter select {
+  margin-left: 10px;
+}
+
+/* MAIN SECTION */
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  align-content: flex-start;
+  padding: 20px;
+  background-color: #ddd;
+}
+
+.icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-basis: calc(100% / 6 - 20px);
+  margin: 20px 10px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.icon i {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.icon span {
+  text-transform: uppercase;
+}
