@@ -18,6 +18,7 @@ body {
 /* HEADER */
 .logo {
   padding: 20px;
+  font-family: 'Acme', sans-serif;
   font-size: 30px;
   color: dodgerblue;
 }
