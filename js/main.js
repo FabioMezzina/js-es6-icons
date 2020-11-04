@@ -100,16 +100,25 @@ $(document).ready(function () {
   ];
   // html references
   const select = $('#type');
+  
   // array containing the colors for each type of icon
   const arrColors = ['blue','orange','purple'];
   // create array with different types of icons
   const arrTypes = getTypes(icons);
   // populate select element with types found in icon set
   populateSelectOptions(arrTypes, select);
-
+  // create a new icons array with color property
+  const iconsColor = addColorIcon(icons, arrColors, arrTypes);
+  console.log(iconsColor);
+  // show icon set
+  filterIcons(iconsColor, select.val());
+  // change() event on select
+  select.change(() => {
+    filterIcons(iconsColor, select.val());
+  });
 });
 
-// Functions declaration
+// FUNCTIONS DECLARATIONS
 /**
  * Return an array containing the differt types of the icon set given
  * @param {object} icons 
@@ -130,11 +139,63 @@ function getTypes(icons) {
  * @param {object} select 
  */
 function populateSelectOptions(arrTypes, select) {
-  const source = $("#option-template").html();
+  const source = $('#option-template').html();
   const template = Handlebars.compile(source);
   arrTypes.forEach((type) => {
     const context = { type };
     const html = template(context);
     select.append(html);
+  });
+}
+
+/**
+ * Add the color property and return the icons object array
+ * @param {object} icons 
+ * @param {object} arrColors 
+ * @param {object} arrTypes 
+ */
+function addColorIcon(icons, arrColors, arrTypes) {
+  return icons.map((icon) => {
+    const position = arrTypes.indexOf(icon.type);
+    return {
+      ...icon,
+      color: arrColors[position]
+    }
+  });
+}
+
+/**
+ * Filter icons based on the type selected
+ * @param {object} iconsColor 
+ * @param {string} selectVal 
+ */
+function filterIcons(iconsColor, selectVal) {
+  const typeSelected = selectVal;
+  console.log(typeSelected);
+  if(typeSelected === 'all') {
+    showIcons(iconsColor);
+  } else {
+    const iconsFiltered = iconsColor.filter((icon)=> {
+      return icon.type === typeSelected;
+    });
+    showIcons(iconsFiltered);
+  }
+}
+
+/**
+ * Show the icons passed with -arrIcons- parameter
+ * @param {object} arrIcons 
+ * @param {function} template 
+ */
+function showIcons(arrIcons) {
+  const mainContent = $('.main-content');
+  const source = $("#icon-template").html();
+  const template = Handlebars.compile(source);
+  mainContent.html('');
+  arrIcons.forEach((icon) => {
+    const {family, prefix, name, color} = icon;
+    const context = {family, prefix, name, color};
+    const html = template(context);
+    mainContent.append(html);
   });
 }
