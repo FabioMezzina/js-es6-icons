@@ -109,12 +109,12 @@ $(document).ready(function () {
   populateSelectOptions(arrTypes, select);
   // create a new icons array with color property
   const iconsColor = addColorIcon(icons, arrColors, arrTypes);
-  console.log(iconsColor);
   // show icon set
-  filterIcons(iconsColor, select.val());
+  showIcons(iconsColor);
   // change() event on select
   select.change(() => {
-    filterIcons(iconsColor, select.val());
+    const iconsFiltered = filterIcons(iconsColor, select.val());
+    showIcons(iconsFiltered);
   });
 });
 
@@ -165,20 +165,16 @@ function addColorIcon(icons, arrColors, arrTypes) {
 }
 
 /**
- * Filter icons based on the type selected
+ * Filter icons based on the type selected. Return the filtered array
  * @param {object} iconsColor 
  * @param {string} selectVal 
  */
 function filterIcons(iconsColor, selectVal) {
   const typeSelected = selectVal;
-  console.log(typeSelected);
   if(typeSelected === 'all') {
-    showIcons(iconsColor);
+    return iconsColor;
   } else {
-    const iconsFiltered = iconsColor.filter((icon)=> {
-      return icon.type === typeSelected;
-    });
-    showIcons(iconsFiltered);
+    return iconsColor.filter((icon) => icon.type === typeSelected);
   }
 }
 
