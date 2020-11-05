@@ -172,9 +172,8 @@ function addColorIcon(icons, arrColors, arrTypes) {
 function filterIcons(iconsColor, selectVal) {
   if(selectVal === 'all') {
     return iconsColor;
-  } else {
-    return iconsColor.filter((icon) => icon.type === selectVal);
   }
+  return iconsColor.filter((icon) => icon.type === selectVal);
 }
 
 /**
