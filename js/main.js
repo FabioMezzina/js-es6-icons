@@ -116,7 +116,7 @@ $(document).ready(function () {
     const iconsFiltered = filterIcons(iconsColor, select.val());
     showIcons(iconsFiltered);
   });
-});
+}); // <- End Doc Ready
 
 // FUNCTIONS DECLARATIONS
 /**
@@ -170,11 +170,10 @@ function addColorIcon(icons, arrColors, arrTypes) {
  * @param {string} selectVal 
  */
 function filterIcons(iconsColor, selectVal) {
-  const typeSelected = selectVal;
-  if(typeSelected === 'all') {
+  if(selectVal === 'all') {
     return iconsColor;
   } else {
-    return iconsColor.filter((icon) => icon.type === typeSelected);
+    return iconsColor.filter((icon) => icon.type === selectVal);
   }
 }
 
